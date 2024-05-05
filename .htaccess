@@ -1,0 +1,11 @@
+RewriteEngine On
+
+# Redirect to a specific URL if the directory is blocked
+RewriteRule ^(controllers|routes|models|controllers|views|config|addons) /404 [R,L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [L]
+
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.php\ HTTP/
+RewriteRule ^index\.php$ / [R=301,L]
